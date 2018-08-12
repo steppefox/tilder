@@ -1,0 +1,7 @@
+{
+  "watch": ["src/next.config.js", "src/*.ts", "locales/**/*.json"],
+  "ignore": ["locales/**/*.missing.json"],
+  "execMap": {
+    "ts": "ts-node --compilerOptions '{\"module\":\"commonjs\"}'"
+  }
+}
