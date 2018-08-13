@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { IStore, TGroupsItems, TGroupsIndex } from '../store/modules/types';
-import Link from '../components/Link';
+import { IStore, TGroupsItems, TGroupsIndex } from '../../store/modules/types';
+import Link from '../../components/Link';
 
-import { loadGroups } from '../store/modules/actions';
+import { loadGroups } from '../../store/modules/actions';
 
 export class ProjectPage extends Component<IProps> {
   static async getInitialProps ({ query, store }) {

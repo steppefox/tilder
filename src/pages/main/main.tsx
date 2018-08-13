@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Link from '../components/Link';
-import { IStore, TProjectsItems, TProjectsIndex } from '../store/modules/types';
-import { loadProjects } from '../store/modules/actions';
+import Link from '../../components/Link';
+import { IStore, TProjectsItems, TProjectsIndex } from '../../store/modules/types';
+import { loadProjects } from '../../store/modules/actions';
 
 export class AppPage extends Component<IProps> {
   static async getInitialProps ({ store }) {
