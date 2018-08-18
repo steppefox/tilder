@@ -16,12 +16,12 @@ export class AppPage extends Component<IProps> {
       {index.map((id) => {
         const item = items[id];
 
-        return <div key={item.id}>
+        return <div className="main__project" key={item.id}>
           <Link href={`/project/${item.id}`}>
             {item.title}
           </Link>
         </div>
-    })}
+      })}
     </div>;
   }
 }

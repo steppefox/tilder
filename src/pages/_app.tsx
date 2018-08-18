@@ -5,6 +5,26 @@ import withRedux from "next-redux-wrapper";
 import './_app.styl';
 
 import { createStore } from '../store';
+import Header from '../components/Header';
+
+export class MyApp extends App<IProps> {
+  render () {
+    const { Component, pageProps, router, store } = this.props;
+
+    return <Container>
+      <Provider store={store}>
+        <div className="app">
+
+          <Header />
+
+          <div className="app__container">
+            <Component {...pageProps} router={router} />
+          </div>
+        </div>
+      </Provider>
+    </Container>
+  }
+}
 
 interface IProps {
   Component: any,
@@ -12,27 +32,5 @@ interface IProps {
   router: any,
   store: any,
 };
-
-export class MyApp extends App<IProps> {
-  // static async getInitialProps ({ Component, router, ctx }) {
-  //   let pageProps = {}
-
-  //   if (Component.getInitialProps) {
-  //     pageProps = await Component.getInitialProps(ctx)
-  //   }
-
-  //   return {pageProps}
-  // }
-
-  render () {
-    const { Component, pageProps, router, store } = this.props;
-
-    return <Container>
-      <Provider store={store}>
-        <Component {...pageProps} router={router} />
-      </Provider>
-    </Container>
-  }
-}
 
 export default withRedux(createStore)(MyApp)
