@@ -1,12 +1,13 @@
 const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
-const withStylus = require("@zeit/next-stylus");
+const withSass = require("@zeit/next-sass");
+
 const withTypescript = require("@zeit/next-typescript");
 const withPlugins = require("next-compose-plugins");
 
 module.exports = withPlugins(
   [
     withTypescript,
-    withStylus,
+    withSass,
     [
       withBundleAnalyzer,
       {

@@ -2,7 +2,7 @@ import App, { Container } from 'next/app';
 import * as React from 'react';
 import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
-import './_app.styl';
+import './_app.scss';
 
 import { createStore } from '../store';
 import Header from '../components/Header';
