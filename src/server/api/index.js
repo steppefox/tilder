@@ -1,6 +1,7 @@
 function initApi(app) {
-  app.use('/api/projects', require('./projects'));
-  app.use('/api/project/:projectId', require('./project'));
+  app.get('/api/projects', require('./projects/list'));
+  app.get('/api/project/:projectId', require('./groups'));
+  app.post('/api/project', require('./projects/add'));
 }
 
 module.exports = initApi;

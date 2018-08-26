@@ -10,7 +10,17 @@ export function setProjects(items) {
 }
 
 export const loadProjects = () => (dispatch) =>
-  http.get(`/projects/`)
+  http.get(`/projects`)
     .then(({ data }) => {
       dispatch(setProjects(data.projects));
+    });
+
+export const addProject = (data) => (dispatch) =>
+  http.post(`/project`, {
+    data,
+  })
+    .then(({ data }) => {
+      if (data.status === 'ok') {
+        dispatch(loadProjects());
+      }
     });

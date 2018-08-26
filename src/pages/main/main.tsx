@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import Link from '../../components/Link';
+import ProjectAddForm from '../../components/ProjectAddForm';
+
 import { IStore, TProjectsItems, TProjectsIndex } from '../../store/modules/types';
-import { loadProjects } from '../../store/modules/actions';
+import { loadProjects, addProject } from '../../store/modules/actions';
 
 export class AppPage extends Component<IProps> {
   static async getInitialProps ({ store }) {
@@ -10,9 +13,16 @@ export class AppPage extends Component<IProps> {
     return {};
   }
 
+  onSubmit = (data) => {
+    this.props.addProject(data);
+  }
+
   render(): JSX.Element {
     const { items, index } = this.props;
     return <div className="main">
+
+      <ProjectAddForm onSubmit={this.onSubmit} />
+
       {index.map((id) => {
         const item = items[id];
 
@@ -32,7 +42,8 @@ interface IStateProps {
 };
 
 interface IDispatchProps {
-  loadProjects: Function,
+  loadProjects: () => void,
+  addProject: (any) => void,
 }
 
 interface IOwnProps {};
@@ -45,6 +56,7 @@ const mapStateToProps = (state: IStore): IStateProps => ({
 
 const mapDispatchToProps = {
   loadProjects,
+  addProject,
 };
 
 export default connect<IStateProps, IDispatchProps>(mapStateToProps, mapDispatchToProps)(AppPage);
