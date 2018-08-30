@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 const defaultState: IState = {
-  name: '',
+  title: '',
 };
 
-export default class ProjectAddForm extends Component<IProps, IState> {
+export default class GroupAdd extends Component<IProps, IState> {
   constructor(props) {
     super(props);
 
@@ -13,7 +13,7 @@ export default class ProjectAddForm extends Component<IProps, IState> {
 
   onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
-      name: e.target.value,
+      title: e.target.value,
     });
   }
 
@@ -30,11 +30,11 @@ export default class ProjectAddForm extends Component<IProps, IState> {
         <div className="field has-addons">
           <div className="control">
             <input
-              name="name"
+              name="title"
               className="input"
-              value={this.state.name}
+              value={this.state.title}
               onChange={this.onChange}
-              placeholder="Enter the project name"
+              placeholder="Enter the group name"
             />
           </div>
           <div className="control">
@@ -51,5 +51,5 @@ interface IProps {
 };
 
 interface IState {
-  name: string,
+  title: string,
 };

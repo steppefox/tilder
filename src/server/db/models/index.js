@@ -1,5 +1,4 @@
-const ProjectModel = require('./projects');
-
 module.exports = {
-  ProjectModel: ProjectModel,
+  ProjectModel: require('./projects'),
+  GroupModel: require('./groups'),
 };

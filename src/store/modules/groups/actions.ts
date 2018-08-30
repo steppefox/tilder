@@ -12,5 +12,18 @@ export function setGroups(items) {
 export const loadGroups = (id: string) => (dispatch) =>
   http.get(`/project/${id}`)
     .then(({ data }) => {
-      dispatch(setGroups(data.groups));
+      dispatch(setGroups(data.items));
+    });
+
+export const addGroup = ({ title, projectId }) => (dispatch) =>
+  http.post(`/group`, {
+    data: {
+      title,
+      projectId
+    },
+  })
+    .then(({ data }) => {
+      if (data.status === 'ok') {
+        dispatch(loadGroups(projectId));
+      }
     });

@@ -5,8 +5,8 @@ function addProject(req, res) {
 
   const model = new ProjectModel({
     title: name,
-    description: '',
-    date: Date.now(),
+    created_at: Date.now(),
+    updated_at: Date.now(),
   });
 
   model.save().then(() => {

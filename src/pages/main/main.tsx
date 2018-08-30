@@ -20,18 +20,21 @@ export class AppPage extends Component<IProps> {
   render(): JSX.Element {
     const { items, index } = this.props;
     return <div className="main">
+      <div className="main__form">
+        <ProjectAddForm onSubmit={this.onSubmit} />
+      </div>
 
-      <ProjectAddForm onSubmit={this.onSubmit} />
+      <div className="main__content">
+        {index.map((id) => {
+          const item = items[id];
 
-      {index.map((id) => {
-        const item = items[id];
-
-        return <div className="main__project" key={item.id}>
-          <Link href={`/project/${item.id}`}>
-            {item.title}
-          </Link>
-        </div>
-      })}
+          return <div className="main__project" key={item.id}>
+            <Link href={`/project/${item.id}`}>
+              {item.title}
+            </Link>
+          </div>
+        })}
+      </div>
     </div>;
   }
 }

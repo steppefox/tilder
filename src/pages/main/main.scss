@@ -1,6 +1,12 @@
 .main {
-  display: flex;
-  flex-wrap: wrap;
+  &__form {
+    margin-bottom: 1rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   &__project {
     flex: 0 1 auto;
