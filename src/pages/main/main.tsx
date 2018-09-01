@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Link from '../../components/Link';
-import ProjectAddForm from '../../components/ProjectAddForm';
+import ProjectAdd from '../../components/forms/ProjectAdd/ProjectAdd';
 
 import { IStore, TProjectsItems, TProjectsIndex } from '../../store/modules/types';
 import { loadProjects, addProject } from '../../store/modules/actions';
@@ -21,7 +21,7 @@ export class AppPage extends Component<IProps> {
     const { items, index } = this.props;
     return <div className="main">
       <div className="main__form">
-        <ProjectAddForm onSubmit={this.onSubmit} />
+        <ProjectAdd onSubmit={this.onSubmit} />
       </div>
 
       <div className="main__content">
@@ -30,7 +30,7 @@ export class AppPage extends Component<IProps> {
 
           return <div className="main__project" key={item.id}>
             <Link href={`/project/${item.id}`}>
-              {item.title}
+              {item.name}
             </Link>
           </div>
         })}

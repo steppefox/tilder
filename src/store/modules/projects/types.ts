@@ -1,7 +1,6 @@
 export type TProjectsItem = {
   id: string,
-  title: string,
-  description: string,
+  name: string,
 };
 
 export type TProjectsItems = {

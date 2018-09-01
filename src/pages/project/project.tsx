@@ -4,7 +4,12 @@ import { IStore, TGroupsItems, TGroupsIndex } from '../../store/modules/types';
 import Link from '../../components/Link';
 import GroupAdd from '../../components/forms/GroupAdd/GroupAdd';
 
-import { loadGroups, addGroup } from '../../store/modules/actions';
+import {
+  loadGroups,
+  addGroup,
+  addKey,
+  TAddKeyArgs,
+} from '../../store/modules/actions';
 
 export class ProjectPage extends Component<IProps> {
   static async getInitialProps ({ query, store }) {
@@ -25,9 +30,17 @@ export class ProjectPage extends Component<IProps> {
     };
   }
 
-  onSubmit = ({ title }) => {
+  onSubmit = ({ name }) => {
     this.props.addGroup({
-      title,
+      name,
+      projectId: this.props.projectId
+    });
+  }
+
+  onSubmitKey = ({ name } : { name: string }) => {
+    this.props.addKey({
+      name,
+      groupId: this.props.groupId,
       projectId: this.props.projectId
     });
   }
@@ -38,6 +51,10 @@ export class ProjectPage extends Component<IProps> {
     return <div className="project">
       <div className="project__breadcrumbs">
         <Link href="/">Go to projects list</Link>
+
+        <button type="button" className="button is-primary is-small">
+          Add key
+        </button>
       </div>
       <div className="project__form">
         <GroupAdd onSubmit={this.onSubmit} />
@@ -47,9 +64,9 @@ export class ProjectPage extends Component<IProps> {
           {index.map((id) =>
             <div key={id}>
               {id === groupId ?
-                <span>{groups[id].title}</span> :
+                <span>{groups[id].name}</span> :
                 <Link href={`/project/${projectId}/group/${id}`}>
-                  {groups[id].title}
+                  {groups[id].name}
                 </Link>
               }
             </div>
@@ -70,7 +87,8 @@ interface IStateProps {
 };
 
 interface IActionProps {
-  addGroup: (string) => void,
+  addGroup: (object) => void,
+  addKey: (object: TAddKeyArgs) => void,
 }
 
 interface IOwnProps {
@@ -87,6 +105,7 @@ const mapStateToProps = (state: IStore):IStateProps => ({
 
 const mapDispatchToProps: IActionProps = {
   addGroup,
+  addKey,
 };
 
 export default connect<IStateProps, IActionProps>(mapStateToProps, mapDispatchToProps)(ProjectPage);

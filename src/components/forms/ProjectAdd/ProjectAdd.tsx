@@ -4,7 +4,7 @@ const defaultState: IState = {
   name: '',
 };
 
-export default class ProjectAddForm extends Component<IProps, IState> {
+export default class ProjectAdd extends Component<IProps, IState> {
   constructor(props) {
     super(props);
 

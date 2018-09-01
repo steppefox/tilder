@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const defaultState: IState = {
-  title: '',
+  name: '',
 };
 
 export default class GroupAdd extends Component<IProps, IState> {
@@ -13,7 +13,7 @@ export default class GroupAdd extends Component<IProps, IState> {
 
   onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
-      title: e.target.value,
+      name: e.target.value,
     });
   }
 
@@ -30,9 +30,9 @@ export default class GroupAdd extends Component<IProps, IState> {
         <div className="field has-addons">
           <div className="control">
             <input
-              name="title"
+              name="name"
               className="input"
-              value={this.state.title}
+              value={this.state.name}
               onChange={this.onChange}
               placeholder="Enter the group name"
             />
@@ -51,5 +51,5 @@ interface IProps {
 };
 
 interface IState {
-  title: string,
+  name: string,
 };

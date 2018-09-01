@@ -15,10 +15,10 @@ export const loadGroups = (id: string) => (dispatch) =>
       dispatch(setGroups(data.items));
     });
 
-export const addGroup = ({ title, projectId }) => (dispatch) =>
+export const addGroup = ({ name, projectId }) => (dispatch) =>
   http.post(`/group`, {
     data: {
-      title,
+      name,
       projectId
     },
   })

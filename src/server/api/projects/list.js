@@ -6,7 +6,7 @@ function listProjects(req, res) {
       items: data.reduce((acc, item) => {
         acc[item._id] = {
           id: item._id,
-          title: item.title
+          name: item.name
         };
 
         return acc;

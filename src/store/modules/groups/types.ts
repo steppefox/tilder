@@ -1,6 +1,6 @@
 export type TGroupItem = {
   id: string,
-  title: string,
+  name: string,
 };
 
 export type TGroupsItems = {
